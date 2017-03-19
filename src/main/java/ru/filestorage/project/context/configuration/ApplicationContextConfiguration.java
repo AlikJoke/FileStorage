@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@PropertySource("classpath:applicationContext-configuration.properties")
+@PropertySource("classpath:message-configuration.properties")
 public class ApplicationContextConfiguration {
 
 	@Value("${defaultMsg}")

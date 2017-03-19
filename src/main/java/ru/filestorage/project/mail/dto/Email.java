@@ -5,7 +5,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.apache.http.annotation.Immutable;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Простое dto, представляющее собой email-сообщение, имеющее адрес назначения и
@@ -20,7 +19,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Email {
 
 	@NotNull
-	@NotEmpty
 	@Size(min = 3)
 	@Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
 	private String address;

@@ -4,8 +4,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Scope;
@@ -19,8 +19,8 @@ public class ApplicationContextHolderImpl implements ApplicationContextAware, Ap
 
 	private ApplicationContext context;
 
-	@Qualifier("defaultMessage")
-	private String defaultMsg;
+	@Autowired
+	private ApplicationContextConfiguration config;
 
 	@Override
 	public void setApplicationContext(ApplicationContext context) throws BeansException {
@@ -60,7 +60,7 @@ public class ApplicationContextHolderImpl implements ApplicationContextAware, Ap
 
 	@Override
 	public String getMessage(String messageKey, Object... args) {
-		return context.getMessage(messageKey, args, defaultMsg, LocaleContextHolder.getLocale());
+		return context.getMessage(messageKey, args, config.getDefaultMessage(), LocaleContextHolder.getLocale());
 	}
 
 	@Override
